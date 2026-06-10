@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f6b5f" />
+    <title>Supra Network DMS</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <main class="login-shell">
+        <section class="login-panel">
+          <div>
+            <p class="eyebrow">Supra Network DMS</p>
+            <h1>Dispatch operations</h1>
+            <p class="muted">Sign in to open a session, enter warehouse tallies, generate invoices, and export the ITC CSV.</p>
+          </div>
+          <form id="loginForm" class="stack">
+            <label>
+              Username
+              <input name="username" autocomplete="username" />
+            </label>
+            <label>
+              Password
+              <input name="password" type="password" autocomplete="current-password" />
+            </label>
+            <label>
+              User type
+              <select name="role">
+                <option value="salesman">Salesman</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="admin">Admin</option>
+              </select>
+            </label>
+            <button class="primary" type="submit">Sign in</button>
+            <p id="loginError" class="error"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>

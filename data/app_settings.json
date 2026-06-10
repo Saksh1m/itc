@@ -1,0 +1,6 @@
+{
+  "invoice_cap": 49999,
+  "token_ttl_seconds": 28800,
+  "default_opening_sticks": 100000,
+  "default_salesman_password_suffix": "123"
+}
