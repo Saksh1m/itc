@@ -21,7 +21,7 @@ from urllib.parse import parse_qs, urlparse
 ROOT = Path(__file__).parent
 STATIC_DIR = ROOT / "static"
 DATA_DIR = ROOT / "data"
-DB_PATH = ROOT / "supra_dms.sqlite3"
+DB_PATH = Path(os.environ.get("SUPRA_DMS_DB_PATH", ROOT / "supra_dms.sqlite3"))
 BEAT_MASTER_PATH = DATA_DIR / "beat_master.csv"
 PRODUCT_MASTER_PATH = DATA_DIR / "product_master.csv"
 SECRET = os.environ.get("SUPRA_DMS_SECRET", "dev-secret-change-before-production").encode()
@@ -1557,8 +1557,10 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     init_db()
-    server = ThreadingHTTPServer(("127.0.0.1", 8000), Handler)
-    print("Supra DMS running at http://127.0.0.1:8000")
+    host = os.environ.get("HOST", "127.0.0.1")
+    port = int(os.environ.get("PORT", "8000"))
+    server = ThreadingHTTPServer((host, port), Handler)
+    print(f"Supra DMS running at http://{host}:{port}")
     server.serve_forever()
 
 

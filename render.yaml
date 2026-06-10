@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: supra-dms
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: SUPRA_DMS_DB_PATH
+        value: /var/data/supra_dms.sqlite3
+      - key: SUPRA_DMS_SECRET
+        generateValue: true
+    disk:
+      name: supra-dms-data
+      mountPath: /var/data
+      sizeGB: 1

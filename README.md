@@ -46,6 +46,27 @@ Then open:
 http://127.0.0.1:8000
 ```
 
+## Deploy
+
+This app must be deployed as a Python web service, not as a static Netlify site. The frontend calls backend routes such as `/api/auth/login`, and those routes are served by `server.py`.
+
+Deployment-ready files are included:
+
+- `Procfile`
+- `requirements.txt`
+- `render.yaml`
+
+For a hosted service, set these environment variables:
+
+```text
+HOST=0.0.0.0
+PORT=<provided by host>
+SUPRA_DMS_SECRET=<long random secret>
+SUPRA_DMS_DB_PATH=<persistent disk path>/supra_dms.sqlite3
+```
+
+If using SQLite in production, the database path must be on a persistent disk. Without persistent storage, sessions, bills, and users can disappear when the host restarts.
+
 ## Demo Logins
 
 The login form asks for username, password, and user type.
