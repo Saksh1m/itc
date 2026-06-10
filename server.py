@@ -1557,7 +1557,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     init_db()
-    host = os.environ.get("HOST", "127.0.0.1")
+    host = os.environ.get("HOST") or ("0.0.0.0" if os.environ.get("PORT") else "127.0.0.1")
     port = int(os.environ.get("PORT", "8000"))
     server = ThreadingHTTPServer((host, port), Handler)
     print(f"Supra DMS running at http://{host}:{port}")
